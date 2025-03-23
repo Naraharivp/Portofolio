@@ -16,12 +16,6 @@ export default function Footer() {
   
   const socialLinks: SocialLink[] = [
     {
-      name: 'Email',
-      icon: <FaEnvelope size={24} />,
-      url: 'mailto:vigrahanarahari@gmail.com',
-      color: '#C7EA46'
-    },
-    {
       name: 'Instagram',
       icon: <FaInstagram size={24} />,
       url: 'https://instagram.com/narahari.vp',
