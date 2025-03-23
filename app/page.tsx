@@ -1,12 +1,15 @@
 import React from 'react';
-import Squares from './components/Squares/Squares';
+import dynamic from 'next/dynamic';
 import Header from './components/Header/Header';
 import About from './sections/About';
 import Education from './sections/Education';
 import Skills from './sections/Skills';
 import Projects from './sections/Projects';
 import Footer from './components/Footer/Footer';
-import ScrollProgress from './components/ScrollProgress/ScrollProgress';
+
+// Dynamic import untuk komponen yang menggunakan window
+const Squares = dynamic(() => import('./components/Squares/Squares'), { ssr: false });
+const ScrollProgress = dynamic(() => import('./components/ScrollProgress/ScrollProgress'), { ssr: false });
 
 export default function Home() {
   return (
