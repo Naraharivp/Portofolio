@@ -126,10 +126,9 @@ const PixelTransition: React.FC<PixelTransitionProps> = ({
         rounded-[15px]
         border-2
         border-white
-        w-[300px]
-        max-w-full
         relative
         overflow-hidden
+        max-w-full
       `}
       style={style}
       onMouseEnter={!isTouchDevice ? handleMouseEnter : undefined}

@@ -29,6 +29,7 @@ const Squares: React.FC<SquaresProps> = ({
   const numSquaresY = useRef<number>(0);
   const gridOffset = useRef<GridOffset>({ x: 0, y: 0 });
   const hoveredSquareRef = useRef<GridOffset | null>(null);
+  const mousePositionRef = useRef<{x: number, y: number} | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -53,10 +54,30 @@ const Squares: React.FC<SquaresProps> = ({
       const startX = Math.floor(gridOffset.current.x / squareSize) * squareSize;
       const startY = Math.floor(gridOffset.current.y / squareSize) * squareSize;
 
+      // Calculate distance from screen center for gradient effect
+      const centerX = canvas.width / 2;
+      const centerY = canvas.height / 2;
+      const maxDistance = Math.sqrt(centerX * centerX + centerY * centerY);
+
       for (let x = startX; x < canvas.width + squareSize; x += squareSize) {
         for (let y = startY; y < canvas.height + squareSize; y += squareSize) {
           const squareX = x - (gridOffset.current.x % squareSize);
           const squareY = y - (gridOffset.current.y % squareSize);
+          
+          // Calculate distance from center for this square
+          const deltaX = squareX + squareSize / 2 - centerX;
+          const deltaY = squareY + squareSize / 2 - centerY;
+          const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+          const opacity = 0.3 + (distance / maxDistance * 0.7);
+          
+          // Mouse influence factor
+          let mouseInfluence = 0;
+          if (mousePositionRef.current) {
+            const mouseDeltaX = squareX + squareSize / 2 - mousePositionRef.current.x;
+            const mouseDeltaY = squareY + squareSize / 2 - mousePositionRef.current.y;
+            const mouseDistance = Math.sqrt(mouseDeltaX * mouseDeltaX + mouseDeltaY * mouseDeltaY);
+            mouseInfluence = Math.max(0, 1 - mouseDistance / (squareSize * 5));
+          }
 
           if (
             hoveredSquareRef.current &&
@@ -64,11 +85,23 @@ const Squares: React.FC<SquaresProps> = ({
               hoveredSquareRef.current.x &&
             Math.floor((y - startY) / squareSize) === hoveredSquareRef.current.y
           ) {
+            ctx.shadowColor = typeof hoverFillColor === 'string' ? hoverFillColor : '#C7EA46';
+            ctx.shadowBlur = 8;
             ctx.fillStyle = hoverFillColor;
+            ctx.fillRect(squareX, squareY, squareSize, squareSize);
+            ctx.shadowBlur = 0;
+          } else if (
+            (Math.floor(x / squareSize) + Math.floor(y / squareSize)) % 3 === 0
+          ) {
+            // Add some pattern by filling in every 3rd square very slightly
+            ctx.fillStyle = `rgba(199, 234, 70, ${0.03 + mouseInfluence * 0.05})`;
             ctx.fillRect(squareX, squareY, squareSize, squareSize);
           }
 
-          ctx.strokeStyle = borderColor;
+          // Border opacity varies based on distance from center and mouse
+          ctx.strokeStyle = typeof borderColor === 'string' 
+            ? borderColor.replace(/[\d.]+\)$/, `${opacity - mouseInfluence * 0.1})`) 
+            : borderColor;
           ctx.strokeRect(squareX, squareY, squareSize, squareSize);
         }
       }
@@ -82,7 +115,7 @@ const Squares: React.FC<SquaresProps> = ({
         Math.sqrt(canvas.width ** 2 + canvas.height ** 2) / 2
       );
       gradient.addColorStop(0, "rgba(0, 0, 0, 0)");
-      gradient.addColorStop(1, "#060606");
+      gradient.addColorStop(1, "rgba(6, 6, 6, 0.7)");
 
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -125,6 +158,8 @@ const Squares: React.FC<SquaresProps> = ({
       const rect = canvas.getBoundingClientRect();
       const mouseX = event.clientX - rect.left;
       const mouseY = event.clientY - rect.top;
+      
+      mousePositionRef.current = { x: mouseX, y: mouseY };
 
       const startX = Math.floor(gridOffset.current.x / squareSize) * squareSize;
       const startY = Math.floor(gridOffset.current.y / squareSize) * squareSize;
@@ -147,6 +182,7 @@ const Squares: React.FC<SquaresProps> = ({
 
     const handleMouseLeave = () => {
       hoveredSquareRef.current = null;
+      mousePositionRef.current = null;
     };
 
     canvas.addEventListener("mousemove", handleMouseMove);

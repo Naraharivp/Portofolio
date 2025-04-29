@@ -61,9 +61,9 @@ export default function About() {
               </div>
             </div>
             <BlurText
-              text="A UI Designer and Software Engineer from Indonesia with a background in Informatics,
-              passionate about crafting intuitive and visually appealing digital experiences.
-              Focused on modern web technologies and responsive design, always striving to build seamless and user-centered interfaces."
+              text="A passionate UI Designer and Software Engineer with a strong academic foundation in Informatics. I thrive on creating clean, functional, 
+              and visually compelling digital experiences that prioritize usability and aesthetics. 
+              My expertise spans across front-end development and UI/UX design, enabling me to bridge the gap between design and technology."
               delay={120}
               animateBy="words"
               direction="top"
@@ -80,8 +80,9 @@ export default function About() {
               threshold={0.2}>
               <div className="flex space-x-4">
                 <a 
-                  href="/cv.pdf" 
-                  download 
+                  href="https://drive.google.com/file/d/1S8SLuw-4I0J7s2qYG9XRnuftuzIdT0DH/view?usp=sharing" 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group relative overflow-hidden px-3 sm:px-4 md:px-8 py-2 md:py-4 bg-transparent text-[#FAFAFA] font-medium rounded-lg 
                   transition-all duration-500 hover:text-[#1E3A5F] font-mono border-2 border-[#C7EA46] shadow-lg shadow-[#C7EA46]/30"
                 >

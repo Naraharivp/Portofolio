@@ -45,14 +45,53 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-[#191919]">
+    <div className="min-h-screen overflow-x-hidden bg-gradient-to-b from-[#141414] via-[#191919] to-[#121826] relative">
+      {/* Abstract geometric pattern background */}
+      <div className="fixed inset-0 z-[-6] opacity-20 pointer-events-none"
+        style={{
+          backgroundImage: `
+            linear-gradient(30deg, #1a1a1a 12%, transparent 12.5%, transparent 87%, #1a1a1a 87.5%, #1a1a1a),
+            linear-gradient(150deg, #1a1a1a 12%, transparent 12.5%, transparent 87%, #1a1a1a 87.5%, #1a1a1a),
+            linear-gradient(30deg, #1a1a1a 12%, transparent 12.5%, transparent 87%, #1a1a1a 87.5%, #1a1a1a),
+            linear-gradient(150deg, #1a1a1a 12%, transparent 12.5%, transparent 87%, #1a1a1a 87.5%, #1a1a1a),
+            linear-gradient(60deg, rgba(199, 234, 70, 0.05) 25%, transparent 25.5%, transparent 75%, rgba(199, 234, 70, 0.05) 75%, rgba(199, 234, 70, 0.05)),
+            linear-gradient(60deg, rgba(199, 234, 70, 0.05) 25%, transparent 25.5%, transparent 75%, rgba(199, 234, 70, 0.05) 75%, rgba(199, 234, 70, 0.05))
+          `,
+          backgroundSize: '80px 140px',
+          backgroundPosition: '0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px'
+        }}
+      ></div>
+      
+      {/* Noise overlay */}
+      <div className="fixed inset-0 opacity-30 z-[-5] pointer-events-none bg-repeat" 
+        style={{ 
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+          backgroundSize: '100px 100px'
+        }}
+      ></div>
+      
+      {/* Subtle dot pattern */}
+      <div className="fixed inset-0 opacity-10 z-[-4] pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(rgba(199, 234, 70, 0.3) 2px, transparent 2px)`,
+          backgroundSize: '30px 30px'
+        }}
+      ></div>
+      
+      {/* Subtle radial glow effect */}
+      <div className="fixed inset-0 bg-radial-gradient z-[-3] opacity-40 pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle at 50% 50%, rgba(199, 234, 70, 0.08), transparent 70%)'
+        }}
+      ></div>
+      
       <ScrollProgress color="#C7EA46" height={4} showPercentage={true} />
       <div className="fixed top-0 left-0 right-0 bottom-0 w-full h-full -z-10">
         <Squares 
           speed={0.5} 
           squareSize={30}
           direction='diagonal'
-          borderColor='#004D40'
+          borderColor='rgba(0, 77, 64, 0.3)'
           hoverFillColor='#C7EA46'
         />
       </div>
