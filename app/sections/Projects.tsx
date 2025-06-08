@@ -6,6 +6,14 @@ import AnimatedContent from '../components/AnimatedContent/AnimatedContent';
 export default function Projects() {
   const projects = [
     {
+      title: "Shoes E-Commerce",
+      description: "A modern e-commerce website for showcasing and selling shoes. Users can browse products, view details, add items to cart, and explore responsive animations. Built with Vue.js and styled using Tailwind CSS.",
+      technologies: ["Vue.js", "Tailwind CSS"],
+      image: "/shoes-ecommers.png",
+      link: "https://shoes-hub-lime.vercel.app/",
+      github: "https://github.com/Naraharivp/ShoesHub"
+    },
+    {
       title: "ClipperCuts",
       description: "A barbershop booking website that allows customers to browse services, view barber profiles, and book appointments seamlessly. Admins can manage bookings, barbers, services, and business settings through an intuitive dashboard.",
       technologies: ["Next.js", "Tailwind CSS"],

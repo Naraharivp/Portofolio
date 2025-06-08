@@ -80,7 +80,7 @@ export default function About() {
               threshold={0.2}>
               <div className="flex space-x-4">
                 <a 
-                  href="https://drive.google.com/file/d/1S8SLuw-4I0J7s2qYG9XRnuftuzIdT0DH/view?usp=sharing" 
+                  href="https://drive.google.com/file/d/1n33RSHNAOfi2hnDA3R-MSwE6j85BxHpX/view?usp=sharing" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group relative overflow-hidden px-3 sm:px-4 md:px-8 py-2 md:py-4 bg-transparent text-[#FAFAFA] font-medium rounded-lg 
