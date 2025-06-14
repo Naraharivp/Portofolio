@@ -41,7 +41,7 @@ export default function Projects() {
       title: "MyAnime-ku",
       description: "a simple website assignment that we are given the task of applying an api to the website and I chose to make this anime list using a free api from Jikan.Moe",
       technologies: ["HTML", "CSS", "JavaScript"],
-      image: "/animeku.png",
+      image: "/animeku.jpeg",
       link: "https://myanime-ku.netlify.app/",
       github: "https://github.com/Naraharivp/MyAnime-ku"
     }
