@@ -43,7 +43,7 @@ export default function Projects() {
       technologies: ["HTML", "CSS", "JavaScript"],
       image: "/animeku.jpeg",
       link: "https://myanime-ku.netlify.app/",
-      github: "https://github.com/Naraharivp/MyAnime-ku"
+      github: "https://github.com/Naraharivp/animeku"
     }
   ];
 
