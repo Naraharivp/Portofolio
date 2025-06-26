@@ -30,7 +30,7 @@ export default function Projects() {
       github: "https://github.com/Naraharivp/presensigps"
     },
     {
-      title: "Gym Landing Page",
+      title: "Gym Website",
       description: "A sleek and modern landing page for a gym, featuring a bold design, clear navigation, and a compelling call to action. Optimized for responsiveness and user engagement. ",
       technologies: ["HTML", "CSS", "JavaScript"],
       image: "/landingPage.jpeg",

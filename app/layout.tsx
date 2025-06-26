@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Script from 'next/script';
+import Squares from './components/Squares/Squares';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -41,7 +42,29 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
+          {/* Background Squares */}
+          <div
+            style={{
+              position: 'absolute',
+              inset: 0,
+              zIndex: 0,
+              pointerEvents: 'none',
+            }}
+          >
+            <Squares
+              direction="diagonal"
+              speed={1}
+              borderColor="rgba(199,234,70,0.5)"
+              squareSize={40}
+              hoverFillColor="#C7EA46"
+            />
+          </div>
+          {/* Konten utama */}
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            {children}
+          </div>
+        </div>
       </body>
     </html>
   );

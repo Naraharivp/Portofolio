@@ -3,7 +3,6 @@
 import React, { useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 
-// Dynamic import untuk komponen yang menggunakan window
 const Squares = dynamic(() => import('./components/Squares/Squares'), { ssr: false });
 const ScrollProgress = dynamic(() => import('./components/ScrollProgress/ScrollProgress'), { ssr: false });
 const Header = dynamic(() => import('./components/Header/Header'), { ssr: false });
@@ -97,8 +96,6 @@ export default function Home() {
       </div>
       
       <Header />
-      
-      {/* Memberikan template grid untuk mengontrol tampilan */}
       <main className="relative pt-0">
         <div 
           ref={aboutRef} 
