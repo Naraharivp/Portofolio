@@ -49,19 +49,18 @@ export default function RootLayout({
               position: 'absolute',
               inset: 0,
               zIndex: 0,
-              pointerEvents: 'none',
             }}
           >
             <Squares
-              direction="diagonal"
-              speed={1}
-              borderColor="rgba(199,234,70,0.5)"
+              speed={0.5}
               squareSize={40}
-              hoverFillColor="#C7EA46"
+              direction='diagonal'
+              borderColor='#fff'
+              hoverFillColor='#222'
             />
           </div>
           {/* Konten utama */}
-          <div style={{ position: 'relative', zIndex: 1 }}>
+          <div style={{ position: 'relative', zIndex: 1, backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
             {children}
           </div>
         </div>

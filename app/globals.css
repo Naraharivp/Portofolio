@@ -12,7 +12,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: transparent;
     --foreground: #ededed;
   }
 }
@@ -49,3 +49,6 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, li, div {
 .animate-fadeIn {
   animation: fadeIn 0.3s ease-in-out forwards;
 }
+
+.w-full { width: 100%; }
+.h-full { height: 100%; }
